@@ -3,31 +3,27 @@ package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
-@Table(name = "Akumulator")
-@NoArgsConstructor
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-public class AkumulatorEntity {
+@Entity
+public class Akumulator {
     @Id
     @Column(name = "ID_Akumulatora", nullable = false)
-    private int idAkumulatora;
+    private Integer id;
 
     @Column(name = "Pojemnosc", nullable = false)
-    private int pojemnosc;
+    private Integer pojemnosc;
 
     @Column(name = "Znamionowa_Ilosc_Cykli", nullable = false)
-    private int znamionowaIloscCykli;
+    private Integer znamionowaIloscCykli;
 
     @Column(name = "Ilosc_Cykli_Rozladowania", nullable = false)
-    private int iloscCykliRozladowania;
+    private Integer iloscCykliRozladowania;
 
     @Column(name = "Poziom_Naladowania", nullable = false)
-    private int poziomNaladowania;
+    private Integer poziomNaladowania;
 
 }

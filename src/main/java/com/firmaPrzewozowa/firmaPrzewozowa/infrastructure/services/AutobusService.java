@@ -1,7 +1,7 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.services;
 
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Autobus;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.repositories.AutobusRepository;
-import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.AutobusEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,25 +16,25 @@ public class AutobusService {
         this.autobusRepository = autobusRepository;
     }
 
-    public AutobusEntity create(AutobusEntity autobusEntity){
-        return autobusRepository.save(autobusEntity);
+    public Autobus create(Autobus Autobus) {
+        return autobusRepository.save(Autobus);
     }
 
-    public List<AutobusEntity> findAll(){
-        List<AutobusEntity> autobusEntityList = new ArrayList<>();
-        autobusRepository.findAll().forEach(autobusEntityList::add);
-        return autobusEntityList;
+    public List<Autobus> findAll() {
+        List<Autobus> AutobusList = new ArrayList<>();
+        autobusRepository.findAll().forEach(AutobusList::add);
+        return AutobusList;
     }
 
-    public Optional<AutobusEntity> findById(long id){
+    public Optional<Autobus> findById(long id) {
         return autobusRepository.findById(id);
     }
 
-    public AutobusEntity update(AutobusEntity autobusEntityToUpdate){
-        return autobusRepository.save(autobusEntityToUpdate);
+    public Autobus update(Autobus AutobusToUpdate) {
+        return autobusRepository.save(AutobusToUpdate);
     }
 
-    public void delete(long id){
+    public void delete(long id) {
         autobusRepository.deleteById(id);
     }
 

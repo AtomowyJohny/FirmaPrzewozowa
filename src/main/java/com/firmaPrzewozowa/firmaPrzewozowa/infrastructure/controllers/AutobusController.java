@@ -1,6 +1,6 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.controllers;
 
-import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.AutobusEntity;
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Autobus;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.requests.CreateAutobusInput;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.services.AutobusService;
 import org.springframework.http.HttpStatus;
@@ -22,15 +22,15 @@ public class AutobusController {
 
 
     @PostMapping("/autobusy")
-    public ResponseEntity<AutobusEntity> createAutobus(@RequestBody CreateAutobusInput createAutobusInput) {
-        AutobusEntity autobusCreated = autobusService.create(createAutobusInput.ToAutobus());
+    public ResponseEntity<Autobus> createAutobus(@RequestBody CreateAutobusInput createAutobusInput) {
+        Autobus autobusCreated = autobusService.create(createAutobusInput.ToAutobus());
         return new ResponseEntity <>(autobusCreated, HttpStatus.CREATED);
     }
 
 
     @GetMapping("/autobusy")
-    public ResponseEntity<List<AutobusEntity>> getAutobus() {
-        List<AutobusEntity> znalezioneAutobusy = autobusService.findAll();
+    public ResponseEntity<List<Autobus>> getAutobus() {
+        List<Autobus> znalezioneAutobusy = autobusService.findAll();
 
         return new ResponseEntity<>(znalezioneAutobusy, HttpStatus.OK);
     }

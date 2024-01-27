@@ -1,10 +1,11 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.requests;
 
-import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.AutobusEntity;
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Autobus;
 
-public record CreateAutobusInput(Long id, Long przebieg, Long mocNetto, Long zasieg, Integer rokProdukcji, Integer iloscMiejsc){
-    public AutobusEntity ToAutobus(){
-        AutobusEntity autobus = new AutobusEntity();
+public record CreateAutobusInput(Integer id, Integer przebieg, Integer mocNetto, Integer zasieg, Integer rokProdukcji,
+                                 Integer iloscMiejsc) {
+    public Autobus ToAutobus() {
+        Autobus autobus = new Autobus();
 
         autobus.setId(id);
         autobus.setPrzebieg(przebieg);
