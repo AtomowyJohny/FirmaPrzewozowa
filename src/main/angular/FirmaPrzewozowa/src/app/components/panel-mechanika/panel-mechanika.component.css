@@ -1,0 +1,45 @@
+.mechanic-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.user-info {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bus-info {
+  grid-column: 2;
+}
+
+.battery-management {
+  grid-column: 1;
+}
+
+.charging {
+  grid-column: 3;
+}
+
+.charging-bar-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.charging-bar {
+  height: 20px;
+  background-color: #4caf50;
+  width: 0;
+  border-radius: 5px;
+}
+
+.avatar-placeholder {
+  background-color: #ccc;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  /* Dodaj odpowiednie style */
+}

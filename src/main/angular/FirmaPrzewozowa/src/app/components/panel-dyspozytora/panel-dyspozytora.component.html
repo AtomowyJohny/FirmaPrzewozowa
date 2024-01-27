@@ -1,0 +1,30 @@
+<div class="dispatcher-panel">
+  <div class="lists-container">
+    <div class="list">
+      <h3>Lista pracowników</h3>
+      <select multiple>
+        <option>Dyspozytor</option>
+        <option>Kierowca</option>
+        <option>Mechanik</option>
+      </select>
+      <button (click)="goToWorkerAddition()">Przejdź do dodawania pracownika</button>
+    </div>
+    <div class="list">
+      <h3>Autobusy przypisane do pracownika</h3>
+      <select multiple>
+        <option>Autobus elektryczny</option>
+        <option>Autobus elektryczny</option>
+        <option>Autobus spalinowy</option>
+      </select>
+      <button (click)="removeBusFromWorker()">Usuń przypisany autobusEntity</button>
+    </div>
+    <div class="list">
+      <h3>Lista autobusów</h3>
+      <select multiple>
+        <option>Autobus elektryczny</option>
+        <option>Autobus spalinowy</option>
+      </select>
+      <button (click)="assignBusToWorker()">Przypisz autobusEntity pracownikowi</button>
+    </div>
+  </div>
+</div>

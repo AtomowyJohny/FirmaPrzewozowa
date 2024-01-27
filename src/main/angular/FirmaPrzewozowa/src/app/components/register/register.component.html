@@ -1,0 +1,32 @@
+<div class="registration-container">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="pesel">Pesel</label>
+      <input type="text" id="pesel" [(ngModel)]="user.pesel" name="pesel" required>
+    </div>
+    <div class="form-group">
+      <label for="firstName">Imię</label>
+      <input type="text" id="firstName" [(ngModel)]="user.firstName" name="firstName" required>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Nazwisko</label>
+      <input type="text" id="lastName" [(ngModel)]="user.lastName" name="lastName" required>
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Nr.tel</label>
+      <input type="tel" id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber" required>
+    </div>
+
+    <div class="form-group">
+      <label>Rola</label>
+      <div class="radio-group">
+        <label><input type="radio" [(ngModel)]="user.role" name="role" value="driver" required> Kierowca</label>
+        <label><input type="radio" [(ngModel)]="user.role" name="role" value="mechanic"> Mechanik</label>
+        <label><input type="radio" [(ngModel)]="user.role" name="role" value="dispatcher"> Dyspozytor</label>
+        <label><input type="radio" [(ngModel)]="user.role" name="role" value="worker"> Pracownik</label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Dalej</button>
+  </form>
+</div>

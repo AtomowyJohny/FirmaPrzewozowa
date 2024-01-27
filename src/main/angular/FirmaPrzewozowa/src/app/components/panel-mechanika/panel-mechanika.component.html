@@ -1,0 +1,52 @@
+<div class="mechanic-panel">
+  <div class="user-info">
+    <div class="avatar-placeholder"></div>
+    <p>Zalogowany: Mechanik</p>
+    <p>Imię:</p>
+    <p>Nazwisko:</p>
+  </div>
+
+  <div class="bus-info">
+    <h2>Informacje o autobusie</h2>
+    <p>Przebieg:</p>
+    <p>Rok produkcji:</p>
+    <p>Model:</p>
+    <p>Moc netto:</p>
+    <p>Zasięg:</p>
+    <p>Ilość miejsc:</p>
+    <p>Liczba akumulatorów:</p>
+  </div>
+
+  <div class="list">
+    <h3>Lista autobusów</h3>
+    <select multiple>
+      <option>Autobus elektryczny</option>
+      <option>Autobus spalinowy</option>
+    </select>
+  </div>
+
+  <div class="battery-management">
+    <h2>Wybierz akumulator do obsługi:</h2>
+    <select>
+      <!-- Opcje akumulatorów -->
+    </select>
+    <div class="battery-parameters">
+      <h3>Parametry</h3>
+      <!-- Parametry akumulatora -->
+    </div>
+    <button class="btn">Wymiana</button>
+    <div class="charging-level">
+      <div class="charging-bar-container">
+        <div class="charging-bar" [style.width]="chargingLevel + '%'"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="charging">
+    <h2>Wybierz tryb ładowarki:</h2>
+    <select>
+      <!-- Opcje ładowania -->
+    </select>
+    <button>Start</button>
+  </div>
+</div>
