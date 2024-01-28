@@ -1,8 +1,6 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +9,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Pracownik {
     @Id
     @Column(name = "ID_Pracownika", nullable = false)

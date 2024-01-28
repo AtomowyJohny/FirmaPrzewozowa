@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import {AutobusService} from "./autobus-service.service";
+import {AutobusService} from "./autobus.service";
 
 
 describe('AutobusServiceService', () => {

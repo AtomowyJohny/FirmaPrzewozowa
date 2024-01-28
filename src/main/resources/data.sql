@@ -90,10 +90,10 @@ VALUES (1, 'Naz_72'),
 
 INSERT INTO autobus_miejski (ID_Autobusu_Miejski, ID_Miasta, Oznaczenie_Kursu)
 VALUES (1, 1, 1),
-       (2, 2, 2),
-       (3, 3, 3),
-       (4, 4, 4),
-       (5, 5, 5);
+       (2, 2, 0),
+       (3, 3, 0),
+       (4, 4, 0),
+       (5, 5, 0);
 
 INSERT INTO autobus_w_miescie (ID_Autobusu_Miedzymiastowy, ID_Miasta)
 VALUES (1, 1),
@@ -110,7 +110,7 @@ VALUES (1, 1),
        (3, 3);
 
 
-INSERT INTO mechanik (ID_Mechanika, Stopien_Doswiadczenia, Dodatek_Do_Premii_Za_Doswiadczenie, Premia)
+INSERT INTO mechanik (id_pracownika, Stopien_Doswiadczenia, Dodatek_Do_Premii_Za_Doswiadczenie, Premia)
 VALUES (1, 1, 135, 307),
        (2, 1, 283, 418),
        (3, 1, 212, 421),

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class AutobusController {
@@ -30,5 +31,17 @@ public class AutobusController {
         List<Autobus> znalezioneAutobusy = autobusService.findAll();
 
         return new ResponseEntity<>(znalezioneAutobusy, HttpStatus.OK);
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/autobusy/{id}")
+    public ResponseEntity<Autobus> oneTask(@PathVariable int id) {
+        Optional<Autobus> optionalAutobus = autobusService.findById(id);
+
+        if (optionalAutobus.isPresent()) {
+            return new ResponseEntity<>(optionalAutobus.get(), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

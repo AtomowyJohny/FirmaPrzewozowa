@@ -6,22 +6,22 @@
     <p>Nazwisko:</p>
   </div>
 
-  <div class="bus-info">
+  <div *ngIf="oneBus" class="bus-info">
     <h2>Informacje o autobusie</h2>
-    <p>Przebieg:</p>
-    <p>Rok produkcji:</p>
-    <p>Model:</p>
-    <p>Moc netto:</p>
-    <p>Zasięg:</p>
-    <p>Ilość miejsc:</p>
-    <p>Liczba akumulatorów:</p>
+    <p>Przebieg: {{oneBus.przebieg}}</p>
+    <p>Rok produkcji: {{oneBus.rokProdukcji}}</p>
+    <p>Model: *dodac model do entity*</p>
+    <p>Moc netto: {{oneBus.mocNetto}}</p>
+    <p>Zasięg: {{oneBus.zasieg}}</p>
+    <p>Ilość miejsc: {{oneBus.iloscMiejsc}}</p>
+    <p>Liczba akumulatorów: *jak pobrać autobus elektryczny*</p>
   </div>
 
   <div class="list">
     <h3>Lista autobusów</h3>
     <select multiple>
-      <option>Autobus elektryczny</option>
-      <option>Autobus spalinowy</option>
+      <option>AutobusModel elektryczny</option>
+      <option>AutobusModel spalinowy</option>
     </select>
   </div>
 

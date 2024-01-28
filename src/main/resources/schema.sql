@@ -25,7 +25,7 @@ CREATE TABLE AkumulatoryAutobusu
     CONSTRAINT AkumulatoryAutobusu_pk PRIMARY KEY (ID_Autobusu_Elektryczny, ID_Akumulatora)
 );
 
--- Table: Autobus
+-- Table: AutobusModel
 CREATE TABLE Autobus
 (
     ID_Autobusu   bigint      NOT NULL,

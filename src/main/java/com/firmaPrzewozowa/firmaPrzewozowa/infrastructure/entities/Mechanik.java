@@ -7,15 +7,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Mechanik {
+@Table(name = "mechanik")
+public class Mechanik extends Pracownik {
     @Id
     @Column(name = "ID_Mechanika", nullable = false)
     private Integer id;
 
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_Mechanika", nullable = false)
-    private Pracownik pracownik;
+//    @MapsId
+//    @OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "ID_Mechanika", nullable = false)
+//    private Pracownik pracownik;
 
     @Column(name = "Stopien_Doswiadczenia", nullable = false)
     private Integer stopienDoswiadczenia;

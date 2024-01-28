@@ -24,21 +24,21 @@ public class MechanikController {
     @CrossOrigin("*")
     @GetMapping("/mechanicy")
     public ResponseEntity<List<Mechanik>> getMechanicy() {
-        List<Mechanik> znalezieniMechanicy = mechanikService.findAll();
+        List<Mechanik> znalezieniMechanicy = mechanikService.findAllMechanics();
 
         return new ResponseEntity<>(znalezieniMechanicy, HttpStatus.OK);
     }
 
-    @CrossOrigin("*")
-    @GetMapping("/tasks/{id}")
-    public ResponseEntity<Mechanik> oneTask(@PathVariable long id) {
-//        int testId = 1;
-        Optional<Mechanik> optionalTask = mechanikService.findById(id);
-
-        if (optionalTask.isPresent()) {
-            return new ResponseEntity<>(optionalTask.get(), HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+//    @CrossOrigin("*")
+//    @GetMapping("/tasks/{id}")
+//    public ResponseEntity<Mechanik> oneTask(@PathVariable long id) {
+////        int testId = 1;
+//        Optional<Mechanik> optionalTask = mechanikService.findById(id);
+//
+//        if (optionalTask.isPresent()) {
+//            return new ResponseEntity<>(optionalTask.get(), HttpStatus.OK);
+//        }
+//
+//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
 }

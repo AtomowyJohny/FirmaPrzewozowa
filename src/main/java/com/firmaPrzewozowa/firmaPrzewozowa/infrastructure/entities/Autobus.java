@@ -1,14 +1,13 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Autobus {
     @Id
     @Column(name = "ID_Autobusu", nullable = false)

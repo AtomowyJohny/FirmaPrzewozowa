@@ -8,15 +8,10 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Autobus_Elektryczny")
-public class AutobusElektryczny {
+public class AutobusElektryczny extends Autobus{
     @Id
     @Column(name = "ID_Autobusu_Elektryczny", nullable = false)
     private Integer id;
-
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_Autobusu_Elektryczny", nullable = false)
-    private Autobus autobus;
 
     @Column(name = "Ilosc_Pakietow_Zasilajacych", nullable = false)
     private Integer iloscPakietowZasilajacych;
