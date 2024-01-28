@@ -3,6 +3,7 @@ package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.services;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Autobus;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Mechanik;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.MechanikWAutobusie;
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.repositories.AutobusRepository;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.repositories.AutobusyMechanikaRepository;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.repositories.MechanikRepository;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,13 @@ import java.util.Optional;
 public class MechanikService {
     private final MechanikRepository mechanikRepository;
 
+    private final AutobusService autobusService;
+
     private final AutobusyMechanikaRepository autobusyMechanikaRepository;
 
-    public MechanikService(MechanikRepository mechanikRepository, AutobusyMechanikaRepository autobusyMechanikaRepository) {
+    public MechanikService(MechanikRepository mechanikRepository, AutobusService autobusService, AutobusyMechanikaRepository autobusyMechanikaRepository) {
         this.mechanikRepository = mechanikRepository;
+        this.autobusService = autobusService;
         this.autobusyMechanikaRepository = autobusyMechanikaRepository;
     }
 
@@ -30,4 +34,15 @@ public class MechanikService {
     public Optional<Mechanik> findById(long id){ return mechanikRepository.findById(id);}
 
 
+    public Optional<List<Autobus>>findAutobusyMechanika(long id){
+        List<Autobus> autobusList = new ArrayList<>();
+
+
+        autobusyMechanikaRepository.findAll().forEach(mechanikWAutobusie -> {
+            if (mechanikWAutobusie.getIdMechanika().getId() == id) {
+                autobusList.add(mechanikWAutobusie.getIdAutobusu());
+            }
+        });
+        return Optional.of(autobusList);
+    }
 }

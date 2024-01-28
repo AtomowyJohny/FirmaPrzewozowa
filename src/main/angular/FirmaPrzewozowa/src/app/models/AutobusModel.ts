@@ -6,6 +6,6 @@ export type AutobusModel = {
   mocNetto: number,
   zasieg: number,
   iloscMiejsc: number,
-  iloscPakietowZasilajacych: number | null,
-  poziomNaladowania: number | null
+  iloscPakietowZasilajacych?: number,
+  poziomNaladowania?: number
 }

@@ -1,5 +1,6 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Autobus {
     @Id
     @Column(name = "ID_Autobusu", nullable = false)

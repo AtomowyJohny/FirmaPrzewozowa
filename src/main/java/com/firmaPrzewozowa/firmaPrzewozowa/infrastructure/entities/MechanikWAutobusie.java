@@ -1,5 +1,6 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
