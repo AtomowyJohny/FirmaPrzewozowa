@@ -36,8 +36,6 @@ public class MechanikService {
 
     public Optional<List<Autobus>>findAutobusyMechanika(long id){
         List<Autobus> autobusList = new ArrayList<>();
-
-
         autobusyMechanikaRepository.findAll().forEach(mechanikWAutobusie -> {
             if (mechanikWAutobusie.getIdMechanika().getId() == id) {
                 autobusList.add(mechanikWAutobusie.getIdAutobusu());
