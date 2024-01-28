@@ -5,10 +5,7 @@ import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.requests.CreateAutobus
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.services.AutobusService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,14 +17,14 @@ public class AutobusController {
         this.autobusService = autobusService;
     }
 
-
+    @CrossOrigin("*")
     @PostMapping("/autobusy")
     public ResponseEntity<Autobus> createAutobus(@RequestBody CreateAutobusInput createAutobusInput) {
         Autobus autobusCreated = autobusService.create(createAutobusInput.ToAutobus());
         return new ResponseEntity <>(autobusCreated, HttpStatus.CREATED);
     }
 
-
+    @CrossOrigin("*")
     @GetMapping("/autobusy")
     public ResponseEntity<List<Autobus>> getAutobus() {
         List<Autobus> znalezioneAutobusy = autobusService.findAll();

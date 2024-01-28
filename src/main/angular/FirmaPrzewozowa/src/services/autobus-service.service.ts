@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {autobus} from "../app/models/autobus";
-
+import {Autobus} from "../app/models/Autobus";
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +13,8 @@ export class AutobusService {
 
   private static readonly AUTOBUS_ENDPOINT: string = 'http://localhost:8080/autobusy';
 
-  public fetchAllBuses(): Observable<autobus[]> {
-    return this.httpClient.get<autobus[]>(
+  public fetchAllBuses(): Observable<Autobus[]> {
+    return this.httpClient.get<Autobus[]>(
       AutobusService.AUTOBUS_ENDPOINT
     );
   }

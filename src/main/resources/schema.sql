@@ -2,17 +2,17 @@
 -- Last modification date: 2024-01-27 19:31:35.405
 
 CREATE
-DATABASE firmaPrzewozowa;
+    DATABASE firmaPrzewozowa;
 
 -- tables
 -- Table: Akumulator
 CREATE TABLE Akumulator
 (
-    ID_Akumulatora           int NOT NULL,
-    Pojemnosc                int NOT NULL,
-    Znamionowa_Ilosc_Cykli   int NOT NULL,
-    Ilosc_Cykli_Rozladowania int NOT NULL,
-    Poziom_Naladowania       int NOT NULL,
+    ID_Akumulatora           bigint    NOT NULL,
+    Pojemnosc                mediumint NOT NULL,
+    Znamionowa_Ilosc_Cykli   mediumint NOT NULL,
+    Ilosc_Cykli_Rozladowania mediumint NOT NULL,
+    Poziom_Naladowania       smallint  NOT NULL,
     CHECK (Poziom_Naladowania <= 100 AND Poziom_Naladowania >= 0),
     CONSTRAINT Akumulator_pk PRIMARY KEY (ID_Akumulatora)
 );
@@ -20,38 +20,38 @@ CREATE TABLE Akumulator
 -- Table: AkumulatoryAutobusu
 CREATE TABLE AkumulatoryAutobusu
 (
-    ID_Autobusu_Elektryczny int NOT NULL,
-    ID_Akumulatora          int NOT NULL,
+    ID_Autobusu_Elektryczny bigint NOT NULL,
+    ID_Akumulatora          bigint NOT NULL,
     CONSTRAINT AkumulatoryAutobusu_pk PRIMARY KEY (ID_Autobusu_Elektryczny, ID_Akumulatora)
 );
 
 -- Table: Autobus
 CREATE TABLE Autobus
 (
-    ID_Autobusu   int         NOT NULL,
-    Przebieg      int         NOT NULL,
-    Rok_Produkcji int         NOT NULL,
+    ID_Autobusu   bigint      NOT NULL,
+    Przebieg      mediumint   NOT NULL,
+    Rok_Produkcji mediumint   NOT NULL,
     Model         varchar(64) NOT NULL,
-    Moc_Netto     int         NOT NULL,
-    Zasieg        int         NOT NULL,
-    Ilosc_Miejsc  int         NOT NULL,
+    Moc_Netto     mediumint   NOT NULL,
+    Zasieg        mediumint   NOT NULL,
+    Ilosc_Miejsc  mediumint   NOT NULL,
     CONSTRAINT Autobus_pk PRIMARY KEY (ID_Autobusu)
 );
 
 -- Table: Autobus_Elektryczny
 CREATE TABLE Autobus_Elektryczny
 (
-    ID_Autobusu_Elektryczny     int NOT NULL,
-    Ilosc_Pakietow_Zasilajacych int NOT NULL,
-    Poziom_Naladowania          int NOT NULL,
+    ID_Autobusu_Elektryczny     bigint    NOT NULL,
+    Ilosc_Pakietow_Zasilajacych bigint    NOT NULL,
+    Poziom_Naladowania          mediumint NOT NULL,
     CONSTRAINT Autobus_Elektryczny_pk PRIMARY KEY (ID_Autobusu_Elektryczny)
 );
 
 -- Table: Autobus_Hybrydowy
 CREATE TABLE Autobus_Hybrydowy
 (
-    ID_Autobusu_Elektryczny int         NOT NULL,
-    ID_Autobusu_Silnikowy   int         NOT NULL,
+    ID_Autobusu_Elektryczny bigint      NOT NULL,
+    ID_Autobusu_Silnikowy   bigint      NOT NULL,
     Typ_Napedu_Hybrydowego  varchar(10) NOT NULL,
     Ladowanie_Plug_in       bool        NOT NULL,
     CHECK (Typ_Napedu_Hybrydowego = 'rownolegly' OR Typ_Napedu_Hybrydowego = 'szeregowy'),
@@ -61,31 +61,31 @@ CREATE TABLE Autobus_Hybrydowy
 -- Table: Autobus_Miedzymiastowy
 CREATE TABLE Autobus_Miedzymiastowy
 (
-    ID_Autobusu_Miedzymiastowy int  NOT NULL,
-    Ilosc_Miast                int  NOT NULL,
-    Max_Odlegosc_Od_zajezdni   int  NOT NULL,
-    Czy_Poza_Kraj              bool NOT NULL,
+    ID_Autobusu_Miedzymiastowy bigint    NOT NULL,
+    Ilosc_Miast                mediumint NOT NULL,
+    Max_Odlegosc_Od_zajezdni   mediumint NOT NULL,
+    Czy_Poza_Kraj              bool      NOT NULL,
     CONSTRAINT Autobus_Miedzymiastowy_pk PRIMARY KEY (ID_Autobusu_Miedzymiastowy)
 );
 
 -- Table: Autobus_Miejski
 CREATE TABLE Autobus_Miejski
 (
-    ID_Autobusu_Miejski int  NOT NULL,
-    ID_Miasta           int  NOT NULL,
-    Oznaczenie_Kursu    bool NOT NULL,
+    ID_Autobusu_Miejski bigint NOT NULL,
+    ID_Miasta           bigint NOT NULL,
+    Oznaczenie_Kursu    bool   NOT NULL,
     CONSTRAINT Autobus_Miejski_pk PRIMARY KEY (ID_Autobusu_Miejski)
 );
 
 -- Table: Autobus_Silnikowy
 CREATE TABLE Autobus_Silnikowy
 (
-    ID_Autobusu_Silnikowy int         NOT NULL,
-    Ilosc_Koni            int         NOT NULL,
-    Spalanie              int         NOT NULL,
-    Pojemnosc_Zbiornika   int         NOT NULL,
+    ID_Autobusu_Silnikowy bigint      NOT NULL,
+    Ilosc_Koni            mediumint   NOT NULL,
+    Spalanie              smallint    NOT NULL,
+    Pojemnosc_Zbiornika   smallint    NOT NULL,
     Typ_Paliwa            varchar(32) NOT NULL,
-    Ilosc_Paliwa          int         NOT NULL,
+    Ilosc_Paliwa          smallint    NOT NULL,
     CHECK (Typ_Paliwa = 'benzyna' OR Typ_Paliwa = 'ropa' OR Typ_Paliwa = 'gaz'),
     CONSTRAINT Autobus_Silnikowy_pk PRIMARY KEY (ID_Autobusu_Silnikowy)
 );
@@ -93,34 +93,34 @@ CREATE TABLE Autobus_Silnikowy
 -- Table: Autobus_W_Miescie
 CREATE TABLE Autobus_W_Miescie
 (
-    ID_Autobusu_Miedzymiastowy int NOT NULL,
-    ID_Miasta                  int NOT NULL,
+    ID_Autobusu_Miedzymiastowy bigint NOT NULL,
+    ID_Miasta                  bigint NOT NULL,
     CONSTRAINT Autobus_W_Miescie_pk PRIMARY KEY (ID_Autobusu_Miedzymiastowy, ID_Miasta)
 );
 
 -- Table: Dyspozytor
 CREATE TABLE Dyspozytor
 (
-    ID_Dyspozytora int NOT NULL,
+    ID_Dyspozytora bigint NOT NULL,
     CONSTRAINT Dyspozytor_pk PRIMARY KEY (ID_Dyspozytora)
 );
 
 -- Table: Dyspozytor_W_Autobusie
 CREATE TABLE Dyspozytor_W_Autobusie
 (
-    ID_Dyspozytora int NOT NULL,
-    ID_Autobusu    int NOT NULL,
+    ID_Dyspozytora bigint NOT NULL,
+    ID_Autobusu    bigint NOT NULL,
     CONSTRAINT Dyspozytor_W_Autobusie_pk PRIMARY KEY (ID_Dyspozytora, ID_Autobusu)
 );
 
 -- Table: Kierowca
 CREATE TABLE Kierowca
 (
-    ID_Kierowcy                   int          NOT NULL,
-    ID_Autobusu                   int          NOT NULL,
-    Lata_Doswiadczenia            int          NOT NULL,
+    ID_Kierowcy                   bigint       NOT NULL,
+    ID_Autobusu                   bigint       NOT NULL,
+    Lata_Doswiadczenia            smallint     NOT NULL,
     Typ_Prawa_Jazdy               varchar(2)   NOT NULL,
-    Kara_Za_Opoznienia            int          NOT NULL,
+    Kara_Za_Opoznienia            smallint     NOT NULL,
     Dodatek_Za_Przydzielone_Kursy double(2, 2) NOT NULL,
     CONSTRAINT Kierowca_pk PRIMARY KEY (ID_Kierowcy)
 );
@@ -128,35 +128,35 @@ CREATE TABLE Kierowca
 -- Table: Kurs
 CREATE TABLE Kurs
 (
-    ID_Kursu      int         NOT NULL,
-    ID_Autobusu   int         NOT NULL,
+    ID_Kursu      bigint      NOT NULL,
+    ID_Autobusu   bigint      NOT NULL,
     Nazwa_Kursu   varchar(32) NOT NULL,
-    Dlugosc_Trasy int         NOT NULL,
+    Dlugosc_Trasy mediumint   NOT NULL,
     CONSTRAINT Kurs_pk PRIMARY KEY (ID_Kursu)
 );
 
 -- Table: Mechanik
 CREATE TABLE Mechanik
 (
-    ID_Mechanika                       int NOT NULL,
-    Stopien_Doswiadczenia              int NOT NULL,
-    Dodatek_Do_Premii_Za_Doswiadczenie int NOT NULL,
-    Premia                             int NOT NULL,
+    ID_Mechanika                       bigint    NOT NULL,
+    Stopien_Doswiadczenia              smallint  NOT NULL,
+    Dodatek_Do_Premii_Za_Doswiadczenie smallint  NOT NULL,
+    Premia                             mediumint NOT NULL,
     CONSTRAINT Mechanik_pk PRIMARY KEY (ID_Mechanika)
 );
 
 -- Table: Mechanik_W_Autobusie
 CREATE TABLE Mechanik_W_Autobusie
 (
-    ID_Mechanika int NOT NULL,
-    ID_Autobusu  int NOT NULL,
+    ID_Mechanika bigint NOT NULL,
+    ID_Autobusu  bigint NOT NULL,
     CONSTRAINT Mechanik_W_Autobusie_pk PRIMARY KEY (ID_Mechanika, ID_Autobusu)
 );
 
 -- Table: Miasto
 CREATE TABLE Miasto
 (
-    ID_Miasta int          NOT NULL,
+    ID_Miasta bigint       NOT NULL,
     Nazwa     varchar(256) NOT NULL,
     CONSTRAINT Miasto_pk PRIMARY KEY (ID_Miasta)
 );
@@ -164,25 +164,25 @@ CREATE TABLE Miasto
 -- Table: Pracownik
 CREATE TABLE Pracownik
 (
-    ID_Pracownika        int          NOT NULL,
+    ID_Pracownika        bigint       NOT NULL,
     Imie                 varchar(32)  NOT NULL,
     Nazwisko             varchar(64)  NOT NULL,
     PESEL                bigint       NOT NULL,
-    Wiek                 int          NOT NULL,
+    Wiek                 tinyint      NOT NULL,
     Data_Urodzenia       date         NOT NULL,
     Dodatek_Od_Lat_Pracy int          NOT NULL,
     Numer_Telefonu       int          NULL,
     Data_Zatrudnienia    date         NOT NULL,
     Mnoznik_Wyplaty      double(2, 2) NOT NULL,
-    Stawka_Bazowa        int          NOT NULL,
+    Stawka_Bazowa        mediumint    NOT NULL,
     CONSTRAINT Pracownik_pk PRIMARY KEY (ID_Pracownika)
 );
 
 -- Table: Pracownik_W_Zajezdni
 CREATE TABLE Pracownik_W_Zajezdni
 (
-    ID_Pracownika int  NOT NULL,
-    ID_Zajezdni   int  NOT NULL,
+    ID_Pracownika bigint  NOT NULL,
+    ID_Zajezdni   bigint  NOT NULL,
     Data_Od       date NOT NULL,
     Data_Do       date NOT NULL,
     CONSTRAINT Pracownik_W_Zajezdni_pk PRIMARY KEY (ID_Pracownika, ID_Zajezdni)
@@ -191,7 +191,7 @@ CREATE TABLE Pracownik_W_Zajezdni
 -- Table: Przystanek
 CREATE TABLE Przystanek
 (
-    ID_Przystanku int          NOT NULL,
+    ID_Przystanku bigint          NOT NULL,
     Nazwa         varchar(64)  NOT NULL,
     Numer         int          NOT NULL,
     Adres         varchar(128) NOT NULL,
@@ -201,15 +201,15 @@ CREATE TABLE Przystanek
 -- Table: Przystanek_W_Kursie
 CREATE TABLE Przystanek_W_Kursie
 (
-    ID_Przystanku int NOT NULL,
-    ID_Kursu      int NOT NULL,
+    ID_Przystanku bigint NOT NULL,
+    ID_Kursu      bigint NOT NULL,
     CONSTRAINT Przystanek_W_Kursie_pk PRIMARY KEY (ID_Przystanku, ID_Kursu)
 );
 
 -- Table: Zajezdnia
 CREATE TABLE Zajezdnia
 (
-    ID_Zajezdni     int         NOT NULL,
+    ID_Zajezdni     bigint         NOT NULL,
     Rodzaj_Zajezdni varchar(16) NOT NULL,
     CONSTRAINT Zajezdnia_pk PRIMARY KEY (ID_Zajezdni)
 );

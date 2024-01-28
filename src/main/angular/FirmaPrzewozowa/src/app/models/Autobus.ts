@@ -1,4 +1,4 @@
-export type autobus = {
+export type Autobus = {
   id: number,
   przebieg: number,
   mocNetto: number,

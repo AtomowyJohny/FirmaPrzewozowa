@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {autobus} from "../../models/autobus";
 import {AutobusService} from "../../../services/autobus-service.service";
+import {Autobus} from "../../models/Autobus";
 
 @Component({
   selector: 'app-panel-dyspozytora',
@@ -11,7 +11,7 @@ import {AutobusService} from "../../../services/autobus-service.service";
 })
 export class PanelDyspozytoraComponent implements OnInit {
 
-  autobusy: autobus[] = [];
+  autobusy: Autobus[] = [];
 
   constructor(
     private _autobusService: AutobusService

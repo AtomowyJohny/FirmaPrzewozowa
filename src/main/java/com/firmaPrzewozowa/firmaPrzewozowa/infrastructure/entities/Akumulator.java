@@ -3,6 +3,8 @@ package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +25,8 @@ public class Akumulator {
     @Column(name = "Ilosc_Cykli_Rozladowania", nullable = false)
     private Integer iloscCykliRozladowania;
 
+    @Min(0)
+    @Max(100)
     @Column(name = "Poziom_Naladowania", nullable = false)
     private Integer poziomNaladowania;
 
