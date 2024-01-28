@@ -1,8 +1,9 @@
 export type AutobusModel = {
   id: number,
   przebieg: number,
+  rokProdukcji: number,
+  model: string,
   mocNetto: number,
   zasieg: number,
-  rokProdukcji: number,
   iloscMiejsc: number
 }

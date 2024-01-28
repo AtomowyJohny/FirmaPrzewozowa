@@ -29,16 +29,16 @@ public class MechanikController {
         return new ResponseEntity<>(znalezieniMechanicy, HttpStatus.OK);
     }
 
-//    @CrossOrigin("*")
-//    @GetMapping("/tasks/{id}")
-//    public ResponseEntity<Mechanik> oneTask(@PathVariable long id) {
-////        int testId = 1;
-//        Optional<Mechanik> optionalTask = mechanikService.findById(id);
-//
-//        if (optionalTask.isPresent()) {
-//            return new ResponseEntity<>(optionalTask.get(), HttpStatus.OK);
-//        }
-//
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//    }
+    @CrossOrigin("*")
+    @GetMapping("/mechanik/{id}")
+    public ResponseEntity<Mechanik> oneTask(@PathVariable long id) {
+//        int testId = 1;
+        Optional<Mechanik> optionalMechanik = mechanikService.findById(id);
+
+        if (optionalMechanik.isPresent()) {
+            return new ResponseEntity<>(optionalMechanik.get(), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }

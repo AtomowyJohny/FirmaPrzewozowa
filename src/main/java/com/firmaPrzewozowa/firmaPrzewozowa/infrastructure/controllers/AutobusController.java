@@ -35,7 +35,7 @@ public class AutobusController {
 
     @CrossOrigin("*")
     @GetMapping("/autobusy/{id}")
-    public ResponseEntity<Autobus> oneTask(@PathVariable int id) {
+    public ResponseEntity<Autobus> oneAutobus(@PathVariable int id) {
         Optional<Autobus> optionalAutobus = autobusService.findById(id);
 
         if (optionalAutobus.isPresent()) {

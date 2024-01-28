@@ -13,11 +13,11 @@ VALUES (1),
        (4);
 
 INSERT INTO autobus (ID_Autobusu, Przebieg, Rok_Produkcji, Model, Moc_Netto, Zasieg, Ilosc_Miejsc)
-VALUES (1, 0, 40, 'Mod_46', 35, 44, 45),
-       (2, 1, 19, 'Mod_81', 18, 33, 84),
-       (3, 0, 15, 'Mod_5', 30, 50, 73),
-       (4, 0, 80, 'Mod_24', 46, 59, 27),
-       (5, 1, 30, 'Mod_25', 19, 60, 25);
+VALUES (1, 45345, 40, 'elektryczny', 35, 44, 45),
+       (2, 74553, 19, 'elektryczny', 18, 33, 84),
+       (3, 66332, 15, 'hybrydowy', 30, 50, 73),
+       (4, 98245, 80, 'spalinowy', 46, 59, 27),
+       (5, 99999, 30, 'spalinowy', 19, 60, 25);
 
 INSERT INTO kierowca (ID_Kierowcy, ID_Autobusu, Lata_Doswiadczenia, Typ_Prawa_Jazdy, Kara_Za_Opoznienia,
                       Dodatek_Za_Przydzielone_Kursy)
@@ -54,25 +54,16 @@ VALUES (1, 20000, 52, 29, 10),
 
 INSERT INTO autobus_elektryczny
 VALUES (1, 5, 61),
-       (2, 3, 0),
-       (3, 6, 24),
-       (4, 3, 52),
-       (5, 9, 26);
+       (2, 3, 0);
+
 
 INSERT INTO akumulatory_autobusu
 VALUES (1, 1),
-       (2, 2),
-       (3, 3),
-       (4, 4),
-       (5, 5);
+       (2, 2);
 
 INSERT INTO autobus_hybrydowy (ID_Autobusu_Elektryczny, ID_Autobusu_Silnikowy, Typ_Napedu_Hybrydowego,
                                Ladowanie_Plug_in)
-VALUES (1, 1, 'rownolegly', 1),
-       (2, 2, 'rownolegly', 0),
-       (3, 3, 'rownolegly', 0),
-       (4, 4, 'rownolegly', 1),
-       (5, 5, 'szeregowy', 1);
+VALUES (2, 3, 'rownolegly', 0);
 
 INSERT INTO autobus_miedzymiastowy (ID_Autobusu_Miedzymiastowy, Ilosc_Miast, Max_Odlegosc_Od_zajezdni, Czy_Poza_Kraj)
 VALUES (1, 89, 1, 1),
