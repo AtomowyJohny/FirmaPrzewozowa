@@ -14,7 +14,7 @@
     <p>Moc netto: {{oneBus.mocNetto}}</p>
     <p>Zasięg: {{oneBus.zasieg}}</p>
     <p>Ilość miejsc: {{oneBus.iloscMiejsc}}</p>
-    <p>Liczba akumulatorów: *jak pobrać autobus elektryczny*</p>
+    <p *ngIf="oneBus.iloscPakietowZasilajacych != null">Liczba akumulatorów: {{oneBus.iloscPakietowZasilajacych}}</p>
   </div>
 
   <div class="list">

@@ -25,7 +25,7 @@ export class PanelMechanikaComponent implements OnInit {
 
   autobusy: AutobusModel[] = []
 
-  oneBus: AutobusModel = {id :0, przebieg:0, zasieg:0, iloscMiejsc:0, rokProdukcji:0, model: "", mocNetto:0 }
+  oneBus: AutobusModel = {id :0, przebieg:0, zasieg:0, iloscMiejsc:0, rokProdukcji:0, model: "", mocNetto:0, iloscPakietowZasilajacych: null, poziomNaladowania: null}
 
 
   constructor(
@@ -41,7 +41,7 @@ export class PanelMechanikaComponent implements OnInit {
         // console.log(this.autobusy)
       }
     )
-    this._autobusService.getAutobusById(1).subscribe(
+    this._autobusService.getAutobusById(3).subscribe(
       bus => {
         this.oneBus = bus;
         // console.log(bus)

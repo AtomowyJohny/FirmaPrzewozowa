@@ -1,6 +1,8 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.controllers;
 
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Autobus;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Mechanik;
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.MechanikWAutobusie;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.services.MechanikService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,6 @@ public class MechanikController {
     @CrossOrigin("*")
     @GetMapping("/mechanik/{id}")
     public ResponseEntity<Mechanik> oneTask(@PathVariable long id) {
-//        int testId = 1;
         Optional<Mechanik> optionalMechanik = mechanikService.findById(id);
 
         if (optionalMechanik.isPresent()) {
@@ -41,4 +42,17 @@ public class MechanikController {
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+//    @CrossOrigin("*")
+//    @GetMapping("/mechanik/{id}/autobusy")
+//    public ResponseEntity<MechanikWAutobusie[]> getAutobusyMechanika(@PathVariable long id){
+//        Optional<MechanikWAutobusie[]> optionalAutobusy = mechanikService.findAutobusyMechanika(id);
+//
+//        if (optionalAutobusy.isPresent()){
+//            return ResponseEntity<>(optionalAutobusy.get(), HttpStatus.OK);
+//        }
+//
+//        return ResponseEntity<>(HttpStatus.NOT_FOUND)
+//    }
+
 }

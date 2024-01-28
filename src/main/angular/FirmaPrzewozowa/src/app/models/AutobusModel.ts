@@ -5,5 +5,7 @@ export type AutobusModel = {
   model: string,
   mocNetto: number,
   zasieg: number,
-  iloscMiejsc: number
+  iloscMiejsc: number,
+  iloscPakietowZasilajacych: number | null,
+  poziomNaladowania: number | null
 }

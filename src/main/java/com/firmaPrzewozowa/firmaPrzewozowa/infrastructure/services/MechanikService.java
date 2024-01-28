@@ -1,5 +1,6 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.services;
 
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Autobus;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Mechanik;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.MechanikWAutobusie;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.repositories.AutobusyMechanikaRepository;
@@ -28,8 +29,5 @@ public class MechanikService {
     }
     public Optional<Mechanik> findById(long id){ return mechanikRepository.findById(id);}
 
-//    public Optional<MechanikWAutobusie> findAutobusyMechanika(long idMechanik) {
-//        return autobusyMechanikaRepository.findById(idMechanik);
-//    }
 
 }
