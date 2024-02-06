@@ -27,7 +27,7 @@ VALUES (1, 1, 0, 'B', 153, 0.63),
        (4, 4, 0, 'C', 208, 0.87),
        (5, 5, 1, 'CE', 374, 0.33);
 
-INSERT INTO autobus_silnikowy (ID_Autobusu_Silnikowy, Ilosc_Koni, Spalanie, Pojemnosc_Zbiornika, Typ_Paliwa,
+INSERT INTO autobus_silnikowy (ID_Autobusu, Ilosc_Koni, Spalanie, Pojemnosc_Zbiornika, Typ_Paliwa,
                                Ilosc_Paliwa)
 VALUES (1, 4, 50, 1, 'benzyna', 56),
        (2, 31, 54, 1, 'gaz', 54),
@@ -52,18 +52,18 @@ VALUES (1, 20000, 52, 29, 10),
        (4, 100, 37, 12, 1),
        (5, 5, 42, 40, 15);
 
-INSERT INTO autobus_elektryczny
+INSERT INTO autobus_elektryczny(id_autobusu, ilosc_pakietow_zasilajacych, poziom_naladowania)
 VALUES (1, 5, 61),
        (2, 3, 0);
 
 
-INSERT INTO akumulatory_autobusu
+INSERT INTO akumulatory_autobusu(ID_Akumulatora, ID_Autobusu_Elektryczny)
 VALUES (1, 1),
        (2, 2);
 
-INSERT INTO autobus_hybrydowy (ID_Autobusu_Elektryczny, ID_Autobusu_Silnikowy, Typ_Napedu_Hybrydowego,
+INSERT INTO autobus_hybrydowy (ID_Autobusu, Typ_Napedu_Hybrydowego,
                                Ladowanie_Plug_in)
-VALUES (2, 3, 'rownolegly', 0);
+VALUES (2, 'rownolegly', 0);
 
 INSERT INTO autobus_miedzymiastowy (ID_Autobusu_Miedzymiastowy, Ilosc_Miast, Max_Odlegosc_Od_zajezdni, Czy_Poza_Kraj)
 VALUES (1, 89, 1, 1),

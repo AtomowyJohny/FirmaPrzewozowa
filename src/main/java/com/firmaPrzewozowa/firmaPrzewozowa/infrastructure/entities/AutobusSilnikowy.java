@@ -8,15 +8,9 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Autobus_Silnikowy")
-public class AutobusSilnikowy {
-    @Id
-    @Column(name = "ID_Autobusu_Silnikowy", nullable = false)
-    private Integer id;
+public class AutobusSilnikowy extends Autobus {
 
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_Autobusu_Silnikowy", nullable = false)
-    private Autobus autobus;
+
 
     @Column(name = "Ilosc_Koni", nullable = false)
     private Integer iloscKoni;

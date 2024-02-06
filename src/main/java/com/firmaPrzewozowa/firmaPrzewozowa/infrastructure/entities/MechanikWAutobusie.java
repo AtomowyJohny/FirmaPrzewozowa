@@ -1,6 +1,5 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,11 +15,11 @@ public class MechanikWAutobusie {
     @MapsId("idMechanika")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ID_Mechanika", nullable = false)
-    private Mechanik idMechanika;
+    private Mechanik mechanik;
 
     @MapsId("idAutobusu")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ID_Autobusu", nullable = false)
-    private Autobus idAutobusu;
+    private Autobus autobus;
 
 }

@@ -8,19 +8,27 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Autobus_Hybrydowy")
-public class AutobusHybrydowy {
-    @EmbeddedId
-    private AutobusHybrydowyId id;
+public class AutobusHybrydowy extends Autobus{
 
-    @MapsId("idAutobusuElektryczny")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_Autobusu_Elektryczny", nullable = false)
-    private AutobusElektryczny idAutobusuElektryczny;
+    @OneToOne
+    @JoinColumn(name = "ID_Autobusu", nullable = false, insertable = false, updatable = false)
+    private AutobusElektryczny autobusElektryczny;
 
-    @MapsId("idAutobusuSilnikowy")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_Autobusu_Silnikowy", nullable = false)
-    private AutobusSilnikowy idAutobusuSilnikowy;
+    @OneToOne
+    @JoinColumn(name = "ID_Autobusu", nullable = false, insertable = false, updatable = false)
+    private AutobusSilnikowy autobusSilnikowy;
+//    @EmbeddedId
+//    private AutobusHybrydowyId id;
+//
+//    @MapsId("idAutobusuElektryczny")
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "ID_Autobusu_Elektryczny", nullable = false)
+//    private AutobusElektryczny idAutobusuElektryczny;
+//
+//    @MapsId("idAutobusuSilnikowy")
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "ID_Autobusu_Silnikowy", nullable = false)
+//    private AutobusSilnikowy idAutobusuSilnikowy;
 
     @Column(name = "Typ_Napedu_Hybrydowego", nullable = false, length = 10)
     private String typNapeduHybrydowego;

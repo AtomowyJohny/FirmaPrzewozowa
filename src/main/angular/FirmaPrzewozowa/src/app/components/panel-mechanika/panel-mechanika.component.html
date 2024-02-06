@@ -19,17 +19,12 @@
 
   <div class="list">
     <h3>Lista autobusów</h3>
-    <select multiple>
-      <option>AutobusModel elektryczny</option>
-      <option>AutobusModel spalinowy</option>
-    </select>
+      <div (click)="wybranyAutobus(autobus)" *ngFor="let autobus of autobusyMechnaika">{{autobus.model}}</div>
   </div>
 
-  <div class="battery-management">
+  <div *ngIf="oneBus.poziomNaladowania" class="battery-management">
     <h2>Wybierz akumulator do obsługi:</h2>
-    <select>
-      <!-- Opcje akumulatorów -->
-    </select>
+      <div *ngFor="let akumulator of akuWybAut">{{akumulator.pojemnosc  }}</div>
     <div class="battery-parameters">
       <h3>Parametry</h3>
       <!-- Parametry akumulatora -->

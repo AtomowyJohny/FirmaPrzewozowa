@@ -19,11 +19,13 @@ public class MechanikService {
     private final AutobusService autobusService;
 
     private final AutobusyMechanikaRepository autobusyMechanikaRepository;
+    private AutobusRepository autobusRepository;
 
-    public MechanikService(MechanikRepository mechanikRepository, AutobusService autobusService, AutobusyMechanikaRepository autobusyMechanikaRepository) {
+    public MechanikService(MechanikRepository mechanikRepository, AutobusService autobusService, AutobusyMechanikaRepository autobusyMechanikaRepository, AutobusRepository autobusRepository) {
         this.mechanikRepository = mechanikRepository;
         this.autobusService = autobusService;
         this.autobusyMechanikaRepository = autobusyMechanikaRepository;
+        this.autobusRepository = autobusRepository;
     }
 
     public List<Mechanik> findAllMechanics(){
@@ -34,13 +36,7 @@ public class MechanikService {
     public Optional<Mechanik> findById(long id){ return mechanikRepository.findById(id);}
 
 
-    public Optional<List<Autobus>>findAutobusyMechanika(long id){
-        List<Autobus> autobusList = new ArrayList<>();
-        autobusyMechanikaRepository.findAll().forEach(mechanikWAutobusie -> {
-            if (mechanikWAutobusie.getIdMechanika().getId() == id) {
-                autobusList.add(mechanikWAutobusie.getIdAutobusu());
-            }
-        });
-        return Optional.of(autobusList);
+    public List<Autobus>findAutobusyMechanika(long id){
+        return autobusRepository.findAutobusByMechanikId(id);
     }
 }

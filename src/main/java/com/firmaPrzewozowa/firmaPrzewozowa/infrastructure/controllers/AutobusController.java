@@ -1,5 +1,6 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.controllers;
 
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Akumulator;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Autobus;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.requests.CreateAutobusInput;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.services.AutobusService;
@@ -43,5 +44,13 @@ public class AutobusController {
         }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
+    @CrossOrigin("*")
+    @GetMapping("/autobusy/{id}/akumulatory")
+    public ResponseEntity<List<Akumulator>> akumulatory(@PathVariable int id){
+        List <Akumulator> akumulatory = autobusService.findAkumulatory(id);
+        return new ResponseEntity<>(akumulatory, HttpStatus.OK);
     }
 }

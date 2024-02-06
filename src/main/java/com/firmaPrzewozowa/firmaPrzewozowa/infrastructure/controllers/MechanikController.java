@@ -1,9 +1,7 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.controllers;
 
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.dto.AutobusDto;
-import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Autobus;
-import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Mechanik;
-import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.MechanikWAutobusie;
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.*;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.services.MechanikService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -53,19 +51,55 @@ public class MechanikController {
     @CrossOrigin("*")
     @GetMapping("/mechanik/{id}/autobusy")
     public ResponseEntity<List<AutobusDto>> getAutobusyMechanika(@PathVariable long id){
-        Optional<List<Autobus>> optionalAutobusy = mechanikService.findAutobusyMechanika(id);
+        List<Autobus> autobusy = mechanikService.findAutobusyMechanika(id);
 
-        if (optionalAutobusy.isPresent()){
+        return new ResponseEntity<>(
+                autobusy.stream()
+                        .map(this::fromEntity)
+                        .toList(),
+                HttpStatus.OK
+        );
+    }
 
-            List<AutobusDto> autobusy = new ArrayList<>();
-
-            for (Autobus autobus: optionalAutobusy.get()){
-                autobusy.add(this.mapper.map(autobus, AutobusDto.class));
-            }
-
-            return new ResponseEntity<>(autobusy, HttpStatus.OK);
+    private AutobusDto fromEntity(Autobus autobus) {
+        if(autobus instanceof AutobusElektryczny autobusElektryczny) {
+            return new AutobusDto(
+                    autobusElektryczny.getId(),
+                    autobusElektryczny.getPrzebieg(),
+                    autobusElektryczny.getRokProdukcji(),
+                    autobusElektryczny.getModel(),
+                    autobusElektryczny.getMocNetto(),
+                    autobusElektryczny.getIloscMiejsc(),
+                    autobusElektryczny.getIloscPakietowZasilajacych(),
+                    autobusElektryczny.getPoziomNaladowania()
+                );
         }
 
-        return new  ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if(autobus instanceof AutobusSilnikowy autobusSilnikowy) {
+            return new AutobusDto(
+                    autobusSilnikowy.getId(),
+                    autobusSilnikowy.getPrzebieg(),
+                    autobusSilnikowy.getRokProdukcji(),
+                    autobusSilnikowy.getModel(),
+                    autobusSilnikowy.getMocNetto(),
+                    autobusSilnikowy.getIloscMiejsc(),
+                    null,
+                    null
+            );
+        }
+
+        if(autobus instanceof AutobusHybrydowy autobusHybrydowy) {
+            return new AutobusDto(
+                    autobusHybrydowy.getId(),
+                    autobusHybrydowy.getAutobusSilnikowy().getPrzebieg(),
+                    autobusHybrydowy.getAutobusSilnikowy().getRokProdukcji(),
+                    autobusHybrydowy.getAutobusSilnikowy().getModel(),
+                    autobusHybrydowy.getAutobusSilnikowy().getMocNetto(),
+                    autobusHybrydowy.getAutobusSilnikowy().getIloscMiejsc(),
+                    autobusHybrydowy.getAutobusElektryczny().getIloscPakietowZasilajacych(),
+                    autobusHybrydowy.getAutobusElektryczny().getPoziomNaladowania()
+            );
+        }
+        throw new RuntimeException();
     }
 }

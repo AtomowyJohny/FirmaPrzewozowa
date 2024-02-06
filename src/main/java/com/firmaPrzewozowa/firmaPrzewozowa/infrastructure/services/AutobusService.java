@@ -1,6 +1,8 @@
 package com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.services;
 
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Akumulator;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.entities.Autobus;
+import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.repositories.AkumulatorRepository;
 import com.firmaPrzewozowa.firmaPrzewozowa.infrastructure.repositories.AutobusRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,11 @@ import java.util.Optional;
 public class AutobusService {
     private final AutobusRepository autobusRepository;
 
-    public AutobusService(AutobusRepository autobusRepository) {
+    private final AkumulatorRepository akumulatorRepository;
+
+    public AutobusService(AutobusRepository autobusRepository, AkumulatorRepository akumulatorRepository) {
         this.autobusRepository = autobusRepository;
+        this.akumulatorRepository = akumulatorRepository;
     }
 
     public Autobus create(Autobus Autobus) {
@@ -25,6 +30,8 @@ public class AutobusService {
         autobusRepository.findAll().forEach(AutobusList::add);
         return AutobusList;
     }
+
+    public List<Akumulator> findAkumulatory(int idAutobusu){return akumulatorRepository.findAkumulatory(idAutobusu);}
 
     public Optional<Autobus> findById(long id) {
         return autobusRepository.findById(id);
